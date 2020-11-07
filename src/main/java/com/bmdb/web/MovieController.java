@@ -45,4 +45,24 @@ public class MovieController {
 		return m;
 	}
 	
+	// Update a movie
+	@PutMapping("/")
+	public Movie updateMovie(@RequestBody Movie m) {
+		m = movieRepo.save(m);
+		return m;
+	}
+	
+	// Delete a movie by id
+	@DeleteMapping("{id}")
+	public Movie deleteMovie(@PathVariable int id) {
+		// Optional type will wrap a movie
+		Optional<Movie> m = movieRepo.findById(id);
+		// isPresent() will return true if a movie was found
+		if (m.isPresent()) {
+			movieRepo.deleteById(id);
+		} else {
+			System.out.println("Error - movie not found for id " + id);
+		}
+		return m.get();
+	}
 }
