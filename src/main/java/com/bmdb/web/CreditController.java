@@ -36,25 +36,25 @@ public class CreditController {
 		return c;
 	}
 	
-//	// Update a actor
-//	@PutMapping("/")
-//	public Actor updateActor(@RequestBody Actor a) {
-//		a = actorRepo.save(a);
-//		return a;
-//	}
-//	
-//	// Delete a actor by id
-//	@DeleteMapping("{id}")
-//	public Actor deleteActor(@PathVariable int id) {
-//		// Optional type will wrap a actor
-//		Optional<Actor> a = actorRepo.findById(id);
-//		// isPresent() will return true if a actor was found
-//		if (a.isPresent()) {
-//			actorRepo.deleteById(id);
-//		} else {
-//			System.out.println("Error - actor not found for id " + id);
-//		}
-//		return a.get();
-//	}
+	// Update a credit
+	@PutMapping("/")
+	public Credit updateCredit(@RequestBody Credit c) {
+		c = creditRepo.save(c);
+		return c;
+	}
+	
+	// Delete a credit by id
+	@DeleteMapping("{id}")
+	public Credit deleteCredit(@PathVariable int id) {
+		// Optional type will wrap a credit
+		Optional<Credit> c = creditRepo.findById(id);
+		// isPresent() will return true if a credit was found
+		if (c.isPresent()) {
+			creditRepo.deleteById(id);
+		} else {
+			System.out.println("Error - credit not found for id " + id);
+		}
+		return c.get();
+	}
 	
 }
