@@ -65,4 +65,16 @@ public class MovieController {
 		}
 		return m.get();
 	}
+	
+	// List all movies by Rating
+	@GetMapping("/find-by-rating")
+	public List<Movie> getAllByRating(@RequestParam String rating) {
+		return movieRepo.findByRating(rating);
+	}
+	
+	// List all movies by Director
+	@GetMapping("/find-by-director")
+	public List<Movie> getAllByDirector(@RequestParam String director) {
+		return movieRepo.findByDirector(director);
+	}
 }
