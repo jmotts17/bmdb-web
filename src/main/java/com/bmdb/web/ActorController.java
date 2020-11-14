@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import com.bmdb.business.Actor;
@@ -86,11 +87,23 @@ public class ActorController {
 		return actorRepo.findByLastNameLike(letter + "%");
 	}
 	
+//	// List all actors by birth date range
+//	@GetMapping("/find-by-birth-date-between")
+//	public List<Actor> getAllByBirthDateBetween(@RequestParam String startDate, @RequestParam String endDate) {
+//		LocalDate ld1 = LocalDate.parse(startDate);
+//		LocalDate ld2 = LocalDate.parse(endDate);
+//		
+//		return actorRepo.findByBirthDateBetween(ld1, ld2);
+//	}
+	
 	// List all actors by birth date range
 	@GetMapping("/find-by-birth-date-between")
-	public List<Actor> getAllByBirthDateBetween(@RequestParam String startDate, @RequestParam String endDate) {
-		LocalDate ld1 = LocalDate.parse(startDate);
-		LocalDate ld2 = LocalDate.parse(endDate);
+	public List<Actor> getAllByBirthDateBetween(
+			@RequestParam("ld1") 
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate ld1,
+			@RequestParam("ld2")
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate ld2) {
+
 		
 		return actorRepo.findByBirthDateBetween(ld1, ld2);
 	}
