@@ -57,4 +57,8 @@ public class MovieGenreController {
 		return mg.get();
 	}
 	
+	@GetMapping("/get-movies-by-genre")
+	public List<MovieGenre> getMoviesByGenre(@RequestParam String genre) {
+		return movieGenreRepo.findByGenreName(genre);	
+	}
 }
