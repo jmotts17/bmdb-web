@@ -14,4 +14,7 @@ public interface MovieRepo extends JpaRepository<Movie, Integer> {
 	// Find movies by director
 	List<Movie> findByDirector(String director);
 	
+	// Find movies by year
+	List<Movie> findByYear(int year);
+	
 }

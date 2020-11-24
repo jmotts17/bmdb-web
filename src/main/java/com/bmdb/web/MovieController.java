@@ -77,4 +77,10 @@ public class MovieController {
 	public List<Movie> getAllByDirector(@RequestParam String director) {
 		return movieRepo.findByDirector(director);
 	}
+	
+	// List all movies by Year
+	@GetMapping("find-by-year")
+	public List<Movie> getAllByYear(@RequestParam int year) {
+		return movieRepo.findByYear(year);
+	}
 }
