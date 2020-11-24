@@ -83,4 +83,10 @@ public class MovieController {
 	public List<Movie> getAllByYear(@RequestParam int year) {
 		return movieRepo.findByYear(year);
 	}
+	
+	// List all movies by year range
+	@GetMapping("find-by-year-between")
+	public List<Movie> getAllByYearBetween(@RequestParam int startYear, @RequestParam int endYear) {
+		return movieRepo.findByYearBetween(startYear, endYear);
+	}
 }

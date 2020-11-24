@@ -87,15 +87,6 @@ public class ActorController {
 		return actorRepo.findByLastNameLike(letter + "%");
 	}
 	
-//	// List all actors by birth date range
-//	@GetMapping("/find-by-birth-date-between")
-//	public List<Actor> getAllByBirthDateBetween(@RequestParam String startDate, @RequestParam String endDate) {
-//		LocalDate ld1 = LocalDate.parse(startDate);
-//		LocalDate ld2 = LocalDate.parse(endDate);
-//		
-//		return actorRepo.findByBirthDateBetween(ld1, ld2);
-//	}
-	
 	// List all actors by birth date range
 	@GetMapping("/find-by-birth-date-between")
 	public List<Actor> getAllByBirthDateBetween(
