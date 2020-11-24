@@ -62,9 +62,6 @@ public class MovieGenreController {
 	 // Returns all movies by a specified genre
 	@GetMapping("/get-movies-by-genre")
 	public List<Movie> getMoviesByGenre(@RequestParam String genre) {
-		
-//		List<MovieGenre> mgList = new ArrayList<>();
-//		mgList = movieGenreRepo.findByGenreName(genre);
 		List<MovieGenre> mgList = movieGenreRepo.findByGenreName(genre);
 		List<Movie> movieList = new ArrayList<>();
 		
@@ -74,9 +71,5 @@ public class MovieGenreController {
 		
 		return movieList;
 	}
-	
-//	@GetMapping("/get-movies-by-genre")
-//	public List<MovieGenre> getMoviesByGenre(@RequestParam String genre) {
-//		return movieGenreRepo.findByGenreName(genre);
-//	}
+
 }

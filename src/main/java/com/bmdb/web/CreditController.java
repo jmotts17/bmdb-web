@@ -1,5 +1,6 @@
 package com.bmdb.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.bmdb.business.Credit;
+import com.bmdb.business.Movie;
 import com.bmdb.db.CreditRepo;
 
 @CrossOrigin
@@ -55,6 +57,19 @@ public class CreditController {
 			System.out.println("Error - credit not found for id " + id);
 		}
 		return c.get();
+	}
+	
+	 // Returns all movies by a specified actor
+	@GetMapping("/get-movies-by-actor")
+	public List<Movie> getMoviesByActor(@RequestParam String firstName, @RequestParam String lastName) {
+		List<Credit> creditList = creditRepo.findByActorFirstNameAndActorLastName(firstName, lastName);
+		List<Movie> movieList = new ArrayList<>();
+		
+		for(Credit credit: creditList) {
+			movieList.add(credit.getMovie());
+		}
+		
+		return movieList;
 	}
 	
 }
