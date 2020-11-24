@@ -8,7 +8,7 @@ import com.bmdb.business.MovieGenre;
 
 public interface MovieGenreRepo extends JpaRepository<MovieGenre, Integer> {
 
-	// Find movies by genre
+	// Find MovieGenre by Genre Name
 	public List<MovieGenre> findByGenreName(String genre);
 	
 }
