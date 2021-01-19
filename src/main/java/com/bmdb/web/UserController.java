@@ -59,6 +59,7 @@ public class UserController {
 		return m.get();
 	}
 	
+	/**
 	// Get Mapping - Get User by Username and Password
 	@GetMapping("/login")
 	public Optional<User> getByUserNameAndPassword(@RequestParam String userName, @RequestParam String password) {
@@ -69,7 +70,7 @@ public class UserController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
 		}		
 	}
-	
+
 	// Post Mapping - Get User by Username and Password
 	@PostMapping("/login")
 	public Optional<User> getByUserNameAndPassword(@RequestBody User u) {
@@ -79,6 +80,13 @@ public class UserController {
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
 		}		
+	}
+	*/
+	
+	// Login
+	@PostMapping("/login")
+	public Optional<User> login(@RequestBody User user) {
+		return userRepo.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 	}
 		
 }
